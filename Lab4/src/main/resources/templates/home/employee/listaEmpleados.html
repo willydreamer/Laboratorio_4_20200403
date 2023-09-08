@@ -63,7 +63,7 @@
           <td th:text="${empleado.departmentid}"></td>
           <td th:text="${empleado.phonenumber}"></td>
           <td th:text="${empleado.salary}"></td>
-          <td><a class="btn btn-primary" th:href="@{'/estadio/editar?id=' + ${empleado.employeeid}}">Editar</a></td>
+          <td><a class="btn btn-primary" th:href="@{'/empleados/editar?id=' + ${empleado.employeeid}}">Editar</a></td>
         </tr>
         </tbody>
       </table>
