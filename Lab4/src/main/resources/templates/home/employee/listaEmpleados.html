@@ -1,0 +1,79 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <link rel="icon" th:href="@{/img/icon.png}" type="image/x-icon" />
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+</head>
+<body>
+<div class='container'>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app" aria-controls="navbar-app" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbar-app">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/empleados/lista}">Empleados</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/historial/lista}"> Historial</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/reportes/lista}"> Reportes</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <main>
+    <!-- Contenido -->
+    <div class="page-header text-center">
+      <h1>Lista de Empleados</h1>
+    </div>
+    <div class="container-fluid">
+      <form method="post" th:action="@{/empleados/buscar}">
+        <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar"/>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/empleados/lista}">Limpiar</a>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Puesto</th>
+          <th>Departamento</th>
+          <th>Numero de Telefono</th>
+          <th>Salario</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="empleado,info:${listaa}">
+          <td th:text="${info.index + 1}"></td>
+          <td th:text="${empleado.firstname}"></td>
+          <td th:text="${empleado.lastname}"></td>
+          <td th:text="${empleado.jobid}"></td>
+          <td th:text="${empleado.departmentid}"></td>
+          <td th:text="${empleado.phonenumber}"></td>
+          <td th:text="${empleado.salary}"></td>
+          <td><a class="btn btn-primary" th:href="@{'/estadio/editar?id=' + ${empleado.employeeid}}">Editar</a></td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <!-- /Contenido -->
+  </main>
+</div>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
